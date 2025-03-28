@@ -1,0 +1,52 @@
+
+
+# Documentação: Adição de Novas Cores ao Formulário e Dashboard
+
+
+Após instalar o plugin, use o shortcode [pec_form] para inserir o formulário no front end.
+
+
+Passos para adicionar novas cores
+
+1. Adicionar a cor no arquivo `form.php`
+
+No arquivo `form.php`, insira a nova cor seguindo o modelo abaixo:
+```html
+<!-- Nome da Cor -->
+<div class="color-cell" style="background-color: #XXXXXX; border: 2px solid #XXXXXX;">
+<div class="color-info">
+<span class="color-name">Nome da Cor</span>
+</div>
+<select class="color-qty" name="colors[nome_da_cor]">
+<?php for ($i = 0; $i <= 10; $i++): ?>
+<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+<?php endfor; ?>
+</select>
+</div>
+```
+- Substitua `#XXXXXX` pelo código hexadecimal da cor desejada.
+- Altere `Nome da Cor` para o nome correto.
+- Modifique `nome_da_cor` no atributo `name` para um identificador em minúsculo, sem espaços ou acentos.
+
+
+
+2. Adicionar a cor no `form-handler.php`
+
+No arquivo `form-handler.php`, na linha 19, insira o nome da nova cor na lista, separada por vírgulas. Exemplo:
+```php
+$cores_disponiveis = ['turquesa', 'ouro', 'framboesa', 'magenta', 'nova_cor'];
+
+
+
+3. Adicionar a cor no `admin-dashboard.php`
+
+No arquivo `admin-dashboard.php`, na linha 39, insira a nova cor no formato adequado:
+```php
+'framboesa' => '#8B0A50',
+'nova_cor' => '#XXXXXX',
+```
+- Substitua `nova_cor` pelo identificador da cor.
+- Altere `#XXXXXX` para o código hexadecimal correspondente.
+
+
+Seguindo esses passos, a nova cor será corretamente registrada e exibida no formulário e no dashboard do
